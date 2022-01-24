@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-//Async
+//Async process
 console.log("START")
 const data = fs.readFileSync('input_countries.csv')
 console.log(data.toString())
@@ -12,7 +12,7 @@ fs.unlink('canada.txt', (err) => {
         console.log(err)
         return
     }
-    console.log("File Deleted...")
+    console.log("File Missing...")
 })
 
 //Delete usa.txt
@@ -21,10 +21,10 @@ fs.unlink('usa.txt', (err) => {
         console.log(err)
         return
     }
-    console.log("File Deleted...")
+    console.log("File Missing...")
 })
 
-//File write to Canada.txt
+//Create canada.txt
 async function appendData(data){
     try{
         await fs.writeFile('canada.txt', data, () => {flag: 'a'})
@@ -35,7 +35,7 @@ async function appendData(data){
 
 appendData('country,year,population\ncanada,1985,23456778\ncanada,1986,23457589')
 
-//File write to usa.txt
+//Create usa.txt
 async function appendData1(data){
     try{
         await fs.writeFile('usa.txt', data, () => {flag: 'a'})
